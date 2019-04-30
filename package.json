@@ -1,0 +1,44 @@
+{
+  "name": "tencentcloud-serverless-nodejs",
+  "version": "0.0.1",
+  "description": "Tencentcloud-serverless SDK for Nodejs",
+  "main": "./dist/index.js",
+  "repository": "https://github.com/Lighting-Jack/tencentcloud-serverless-nodejs",
+  "author": "Lighting-Jack",
+  "license": "MIT",
+  "scripts": {
+    "init": "commitizen init cz-conventional-changelog --save --save-exact",
+    "build": "tsc --outDir dist/ -p tsconfig.json",
+    "tsn": "ts-node --no-cache",
+    "release": "standard-version",
+    "pub": "git push --follow-tags origin master && npm publish",
+    "test": "jest"
+  },
+  "engines": {
+    "node": ">= 7.6.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.0",
+    "@types/es6-promise": "^3.3.0",
+    "@types/node": "^11.13.8",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.4",
+    "commitizen": "^3.0.5",
+    "cross-env": "^5.2.0",
+    "cz-conventional-changelog": "^2.1.0",
+    "jest": "^23.6.0",
+    "standard-version": "^4.4.0",
+    "typescript": "^3.2.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "keywords": [
+    "serverless"
+  ],
+  "dependencies": {
+    "qcloudapi-sdk": "^0.2.1"
+  }
+}

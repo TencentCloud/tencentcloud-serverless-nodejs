@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "lib": ["es2015", "es2016", "es2017", "dom"],
+    "allowJs": false,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels":false,
+    "allowSyntheticDefaultImports": true,
+    "charset": "utf8",
+    "declaration": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "importHelpers": false,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noEmitOnError": false,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters":false,
+    "outDir": "./dist",
+    "baseUrl": "./src",
+    "pretty": true,
+    "removeComments": true,
+    "stripInternal": true,
+    "types": ["node"],
+    "strict": false
+  },
+  "compileOnSave": true,
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}
