@@ -11,4 +11,4 @@ declare class SDK {
     invoke: typeof services.invoke;
 }
 declare const _default: SDK;
-export default _default;
+export = _default;

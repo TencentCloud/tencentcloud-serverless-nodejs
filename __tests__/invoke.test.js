@@ -1,4 +1,4 @@
-const { default: sdk } = require('../dist/index')
+const sdk = require('../dist/index')
 
 sdk.init({
   region: 'ap-guangzhou'

@@ -1,5 +1,4 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 const services = require("./services");
 const Capi = require("qcloudapi-sdk");
 const util = require("util");
@@ -27,4 +26,4 @@ class SDK {
         this.requestHelper = util.promisify(capi.request.bind(capi));
     }
 }
-exports.default = new SDK();
+module.exports = new SDK();

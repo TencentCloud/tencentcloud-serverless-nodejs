@@ -40,4 +40,4 @@ class SDK {
   invoke = services.invoke
 }
 
-export default new SDK()
+export = new SDK()
