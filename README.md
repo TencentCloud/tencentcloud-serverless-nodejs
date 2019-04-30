@@ -3,7 +3,6 @@
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 [![NPM Version](https://img.shields.io/npm/v/tencentcloud-serverless-nodejs.svg?style=flat)](https://www.npmjs.com/package/tencentcloud-serverless-nodejs)
 [![NODE Version](https://img.shields.io/node/v/tencentcloud-serverless-nodejs.svg)](https://www.npmjs.com/package/tencentcloud-serverless-nodejs)
-[![CircleCI](https://circleci.com/gh/Lighting-Jack/tencentcloud-serverless-nodejs/tree/master.svg?style=svg)](https://circleci.com/gh/Lighting-Jack/tencentcloud-serverless-nodejs/tree/master)
 
 
 腾讯云云函数SDK，集成云函数业务流接口
@@ -38,6 +37,7 @@ sdk.invoke({
 使用SDK前，需要先初始化SDK，可传入`region`,`secretId`,`secretKey`。
 
 **Params:**
+
 | 参数名    | 是否必填 |  类型  |                                       描述 |
 | :-------- | :------: | :----: | -----------------------------------------: |
 | region    |    否    | string |                                       地域 |
@@ -48,6 +48,7 @@ sdk.invoke({
 调用函数。暂时只支持同步调用。
 
 **Params:**
+
 | 参数名        | 是否必填 |  类型  |                    描述 |
 | :------------ | :------: | :----: | ----------------------: |
 | functionName  |    是    | string |                函数名称 |
@@ -55,7 +56,6 @@ sdk.invoke({
 | clientContext |    否    | string |            函数运行入参 |
 | namespace     |    否    | string | 命名空间，默认为default |
 
-**Response:**
 
 ## TODO List
 * [ ] 支持管理流接口
