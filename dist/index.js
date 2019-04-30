@@ -10,6 +10,7 @@ class SDK {
         const __config = Object.assign({}, {
             secretId: process.env.TENCENTCLOUD_SECRETID,
             secretKey: process.env.TENCENTCLOUD_SECRETKEY,
+            token: process.env.TENCENTCLOUD_SESSIONTOKEN,
             region: 'ap-guangzhou'
         }, config);
         if (!__config.secretId || !__config.secretKey)

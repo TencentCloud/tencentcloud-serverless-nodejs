@@ -34,24 +34,24 @@ export default async function(params: Params): Promise<Res> {
   const requestHelper = this.requestHelper
   const region = this.config.region
 
-  const __params = caseForObject(
-    Object.assign(
-      {
-        region,
-        namespace: 'default',
-        qualifier: '$LATEST'
-      },
-      params,
-      {
-        invocationType: 'RequestResponse',
-        logType: 'Tail',
-        version: '2018-04-16',
-        action: 'Invoke'
-      }
-    ),
-    'upper'
-  )
-  return await requestHelper(__params, {
+  let __params = Object.assign(
+    {
+      region,
+      namespace: 'default',
+      qualifier: '$LATEST'
+    },
+    params,
+    {
+      invocationType: 'RequestResponse',
+      logType: 'Tail',
+      version: '2018-04-16',
+      action: 'Invoke'
+    }
+  ) as any
+
+  if (this.config.token) __params.token = this.config.token
+
+  return await requestHelper(caseForObject(__params, 'upper'), {
     serviceType: 'scf'
   })
 }

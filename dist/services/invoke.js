@@ -4,7 +4,7 @@ const utils_1 = require("../helper/utils");
 async function default_1(params) {
     const requestHelper = this.requestHelper;
     const region = this.config.region;
-    const __params = utils_1.caseForObject(Object.assign({
+    let __params = Object.assign({
         region,
         namespace: 'default',
         qualifier: '$LATEST'
@@ -13,8 +13,10 @@ async function default_1(params) {
         logType: 'Tail',
         version: '2018-04-16',
         action: 'Invoke'
-    }), 'upper');
-    return await requestHelper(__params, {
+    });
+    if (this.config.token)
+        __params.token = this.config.token;
+    return await requestHelper(utils_1.caseForObject(__params, 'upper'), {
         serviceType: 'scf'
     });
 }

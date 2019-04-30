@@ -2,6 +2,7 @@ import * as services from './services';
 interface InitConfig {
     secretId: any;
     secretKey: any;
+    token?: any;
     region: any;
 }
 declare class SDK {

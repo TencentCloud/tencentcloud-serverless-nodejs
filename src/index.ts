@@ -5,6 +5,7 @@ import * as util from 'util'
 interface InitConfig {
   secretId
   secretKey
+  token?
   region
 }
 
@@ -18,6 +19,7 @@ class SDK {
       {
         secretId: process.env.TENCENTCLOUD_SECRETID,
         secretKey: process.env.TENCENTCLOUD_SECRETKEY,
+        token: process.env.TENCENTCLOUD_SESSIONTOKEN,
         region: 'ap-guangzhou'
       },
       config
