@@ -2,8 +2,12 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const utils_1 = require("../helper/utils");
 async function default_1(params) {
+    if (!this.config)
+        this.init();
     const requestHelper = this.requestHelper;
     const region = this.config.region;
+    params['clientContext'] = params.data;
+    delete params.data;
     let __params = Object.assign({
         region,
         namespace: 'default',
@@ -16,8 +20,11 @@ async function default_1(params) {
     });
     if (this.config.token)
         __params.token = this.config.token;
-    return await requestHelper(utils_1.caseForObject(__params, 'upper'), {
-        serviceType: 'scf'
-    });
+    return await utils_1.uniteRes(requestHelper, this, [
+        utils_1.caseForObject(__params, 'upper'),
+        {
+            serviceType: 'scf'
+        }
+    ], 'Response.Result.RetMsg');
 }
 exports.default = default_1;

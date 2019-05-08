@@ -2,7 +2,7 @@ import { APIV3Res, APIV3Error } from '../helper/types';
 interface Params {
     functionName: string;
     qualifier?: string;
-    clientContext?: string;
+    data?: string;
     namespace?: string;
 }
 declare type Res = APIV3Res<{

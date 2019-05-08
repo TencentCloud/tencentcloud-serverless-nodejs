@@ -40,6 +40,8 @@ function caseForObject(obj, type) {
     const typeFormat = exports.caseFormat(type);
     const isObject = exports.isType('Object');
     const isArray = exports.isType('Array');
+    if (!isObject(_obj) && !isArray(_obj))
+        return obj;
     function _caseForV3(_tmp) {
         for (let item in _tmp) {
             if (_tmp.hasOwnProperty(item)) {
@@ -67,3 +69,36 @@ function caseForObject(obj, type) {
     return _obj;
 }
 exports.caseForObject = caseForObject;
+exports.getValue = obj => key => {
+    let res;
+    let returnUndefined = undefined;
+    let _obj = obj;
+    let keyChain = [];
+    const isUndefined = exports.isType('Undefined');
+    const isNull = exports.isType('Null');
+    keyChain = key.split('.');
+    for (let item of keyChain) {
+        if (isUndefined(_obj[item]) || isNull(_obj[item])) {
+            res = returnUndefined;
+            break;
+        }
+        else {
+            res = _obj[item];
+            _obj = _obj[item];
+        }
+    }
+    return res;
+};
+async function uniteRes(fn, scope, args, returnKey) {
+    try {
+        const res = await fn.apply(scope, args);
+        if (res.Response.Error) {
+            throw res.Response;
+        }
+        return caseForObject(exports.getValue(res)(returnKey), 'lower');
+    }
+    catch (e) {
+        return caseForObject(e, 'lower');
+    }
+}
+exports.uniteRes = uniteRes;

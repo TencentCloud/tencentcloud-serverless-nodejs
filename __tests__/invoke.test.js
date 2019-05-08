@@ -1,3 +1,5 @@
+const LabelResourceNotFound = String('ResourceNotFound.Function')
+
 const sdk = require('../dist/index')
 
 sdk.init({
@@ -5,13 +7,23 @@ sdk.init({
 })
 
 describe('Test Api', () => {
-  test('Test Invoke', async () => {
+  test('Test Invoke Correct', async () => {
     const res = await sdk.invoke({
       functionName: 'test',
-      clientContext: JSON.stringify({
+      data: JSON.stringify({
         retMsg: 'test'
       })
     })
-    expect(res.Response.Result.RetMsg).toBe(JSON.stringify('test'))
+    expect(res).toBe(JSON.stringify('test'))
+  })
+
+  test('Test Invoke Error', async () => {
+    const res = await sdk.invoke({
+      functionName: 'fake_function',
+      data: JSON.stringify({
+        retMsg: 'test'
+      })
+    })
+    expect(res.error.code).toBe(LabelResourceNotFound)
   })
 })

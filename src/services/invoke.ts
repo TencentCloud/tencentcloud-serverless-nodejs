@@ -1,4 +1,4 @@
-import { caseForObject } from '../helper/utils'
+import { caseForObject, uniteRes } from '../helper/utils'
 import { APIV3Res, APIV3Error } from '../helper/types'
 
 interface Params {
@@ -7,7 +7,7 @@ interface Params {
   /**版本/别名 */
   qualifier?: string
   /**运行函数的参数 */
-  clientContext?: string
+  data?: string
   /**函数所在命名空间 */
   namespace?: string
 }
@@ -31,8 +31,13 @@ type Res = APIV3Res<{
  * @param params
  */
 export default async function(params: Params): Promise<Res> {
+  if (!this.config) this.init()
+
   const requestHelper = this.requestHelper
   const region = this.config.region
+
+  params['clientContext'] = params.data
+  delete params.data
 
   let __params = Object.assign(
     {
@@ -51,7 +56,15 @@ export default async function(params: Params): Promise<Res> {
 
   if (this.config.token) __params.token = this.config.token
 
-  return await requestHelper(caseForObject(__params, 'upper'), {
-    serviceType: 'scf'
-  })
+  return await uniteRes(
+    requestHelper,
+    this,
+    [
+      caseForObject(__params, 'upper'),
+      {
+        serviceType: 'scf'
+      }
+    ],
+    'Response.Result.RetMsg'
+  )
 }
