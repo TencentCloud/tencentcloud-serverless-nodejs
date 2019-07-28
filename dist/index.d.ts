@@ -1,7 +1,7 @@
 import * as services from './services';
 interface InitConfig {
-    secretId: any;
-    secretKey: any;
+    secretId?: any;
+    secretKey?: any;
     token?: any;
     region: any;
 }

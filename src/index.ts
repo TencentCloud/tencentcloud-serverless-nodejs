@@ -3,8 +3,8 @@ import * as Capi from 'qcloudapi-sdk'
 import * as util from 'util'
 
 interface InitConfig {
-  secretId
-  secretKey
+  secretId?
+  secretKey?
   token?
   region
 }

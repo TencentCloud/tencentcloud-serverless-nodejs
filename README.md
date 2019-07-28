@@ -15,7 +15,7 @@ npm install tencentcloud-serverless-nodejs
 
 ## Example
 ```javascript
-const sdk = require('tencentcloud-serverless-nodejs)
+const sdk = require('tencentcloud-serverless-nodejs')
 sdk.init({
   region: 'ap-guangzhou'
 }) // 如果sdk运行在云函数中，初始化时可以不传secretId,secretKey
