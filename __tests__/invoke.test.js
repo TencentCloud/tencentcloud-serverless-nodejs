@@ -1,4 +1,4 @@
-const LabelResourceNotFound = String('ResourceNotFound.Function')
+const LabelResourceNotFound = String('ResourceNotFound.FunctionName')
 
 const sdk = require('../dist/index')
 
