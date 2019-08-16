@@ -31,7 +31,8 @@ type Res = APIV3Res<{
  * @param params
  */
 export default async function(params: Params & InitConfig): Promise<Res> {
-  if (!this.config)
+  const config = this.config
+  if (!config)
     this.init({
       secretId: params.secretId,
       secretKey: params.secretKey,
@@ -40,7 +41,7 @@ export default async function(params: Params & InitConfig): Promise<Res> {
     })
 
   const requestHelper = this.requestHelper
-  const region = this.config.region
+  const region = config.region
 
   // 区分默认参数，可配置参数，不可配置参数
   let __params = Object.assign(
@@ -53,7 +54,9 @@ export default async function(params: Params & InitConfig): Promise<Res> {
       functionName: params.functionName,
       qualifier: params.qualifier,
       clientContext: params.data,
-      namespace: params.namespace
+      namespace: params.namespace,
+      region: params.region || config.region,
+      secretId: params.secretId || config.secretId
     },
     {
       invocationType: 'RequestResponse',
@@ -63,7 +66,8 @@ export default async function(params: Params & InitConfig): Promise<Res> {
     }
   ) as any
 
-  if (this.config.token) __params.token = this.config.token
+  if (config.token || params.token)
+    __params.token = params.token || config.token
 
   return await uniteRes(
     requestHelper,
@@ -71,7 +75,8 @@ export default async function(params: Params & InitConfig): Promise<Res> {
     [
       caseForObject(__params, 'upper'),
       {
-        serviceType: 'scf'
+        serviceType: 'scf',
+        secretKey: params.secretKey || config.secretId
       }
     ],
     'Response.Result.RetMsg'
