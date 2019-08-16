@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.0.16"></a>
+## [0.0.16](https://github.com/Lighting-Jack/tencentcloud-serverless-nodejs/compare/v0.0.15...v0.0.16) (2019-08-16)
+
+
+### Bug Fixes
+
+* **interface:invoke:** fix interface:invoke argv ([f7314b2](https://github.com/Lighting-Jack/tencentcloud-serverless-nodejs/commit/f7314b2))
+
+
+
 <a name="0.0.15"></a>
 ## [0.0.15](https://github.com/Lighting-Jack/tencentcloud-serverless-nodejs/compare/v0.0.14...v0.0.15) (2019-08-16)
 
