@@ -131,7 +131,6 @@ export const getValue: (obj: object) => (key: string) => any = obj => key => {
 export async function uniteRes(fn, scope, args, returnKey) {
   try {
     const res = await fn.apply(scope, args)
-
     if (res.Response.Error) {
       throw res.Response
     }

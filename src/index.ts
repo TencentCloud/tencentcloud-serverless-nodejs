@@ -1,16 +1,11 @@
 import * as services from './services'
 import * as Capi from 'qcloudapi-sdk'
 import * as util from 'util'
-
-interface InitConfig {
-  secretId?
-  secretKey?
-  token?
-  region
-}
+import { InitConfig } from './helper/types'
+import { ERR_MISSING_SECRET } from './helper/error'
 
 class SDK {
-  public config
+  public config: InitConfig
   public requestHelper
 
   init(config?: InitConfig) {
@@ -26,7 +21,7 @@ class SDK {
     )
 
     if (!__config.secretId || !__config.secretKey)
-      throw Error('Init failed! Missing secretId or secretKey.')
+      throw Error(ERR_MISSING_SECRET)
 
     this.config = __config
     const capi = new Capi({

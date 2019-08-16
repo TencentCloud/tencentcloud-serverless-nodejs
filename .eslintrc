@@ -1,0 +1,59 @@
+{
+    "extends": [
+      "plugin:@typescript-eslint/recommended",
+      "plugin:prettier/recommended"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 8,
+      "sourceType": "module"
+    },
+    "env": {
+      "es6": true,
+      "node": true
+    },
+    "globals": {
+      "process": false
+    },
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint",
+      "prettier",
+    ],
+    "rules": {
+      "prettier/prettier": [
+        "error",
+        {
+          "singleQuote": true,
+          "semi": false,
+          "tabWidth": 2
+        },
+        {
+          "usePrettierrc": false
+        }
+      ],
+      "react/prop-types": 0,
+      "react/display-name": 0,
+      "eqeqeq": [
+        "error",
+        "always"
+      ],
+      "@typescript-eslint/indent": 0, //用eslint的indent
+      "@typescript-eslint/member-delimiter-style": [
+        2,
+        {
+          "multiline": {
+            "delimiter": "none",
+            "requireLast": false
+          },
+          "singleline": {
+            "requireLast": false
+          }
+        }
+      ],
+      "@typescript-eslint/explicit-member-accessibility": 0,
+      "@typescript-eslint/explicit-function-return-type": 0, //调试时关闭，调试完毕后需注释
+      "@typescript-eslint/no-explicit-any": 0, //调试时关闭，调试完毕后需注释
+      "@typescript-eslint/no-var-requires": 0, //调试时关闭，调试完毕后需注释
+    }
+  }
+  

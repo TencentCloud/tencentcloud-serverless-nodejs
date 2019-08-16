@@ -1,12 +1,7 @@
 import * as services from './services';
-interface InitConfig {
-    secretId?: any;
-    secretKey?: any;
-    token?: any;
-    region: any;
-}
+import { InitConfig } from './helper/types';
 declare class SDK {
-    config: any;
+    config: InitConfig;
     requestHelper: any;
     init(config?: InitConfig): void;
     invoke: typeof services.invoke;

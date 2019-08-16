@@ -12,3 +12,10 @@ export interface APIV3Error {
     }
   }
 }
+
+export interface InitConfig {
+  secretId?: string
+  secretKey?: string
+  token?: string
+  region: string
+}

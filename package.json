@@ -13,7 +13,8 @@
     "release": "standard-version",
     "pub": "git push --follow-tags origin master && npm publish",
     "test": "jest --config jest.config.js",
-    "cov": "codecov"
+    "cov": "codecov",
+    "lint": "eslint --fix --ext .js,.ts,.tsx ./src"
   },
   "engines": {
     "node": ">= 7.6.0"
@@ -30,7 +31,14 @@
     "cz-conventional-changelog": "^2.1.0",
     "jest": "^24.7.1",
     "standard-version": "^4.4.0",
-    "typescript": "^3.2.2"
+    "typescript": "^3.2.2",
+    "@typescript-eslint/eslint-plugin": "^1.11.0",
+    "@typescript-eslint/parser": "^1.11.0",
+    "eslint": "^5.15.3",
+    "eslint-plugin-react": "^7.12.4",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "prettier": "1.18.2"
   },
   "config": {
     "commitizen": {

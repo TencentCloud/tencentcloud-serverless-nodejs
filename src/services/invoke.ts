@@ -1,5 +1,5 @@
 import { caseForObject, uniteRes } from '../helper/utils'
-import { APIV3Res, APIV3Error } from '../helper/types'
+import { APIV3Res, APIV3Error, InitConfig } from '../helper/types'
 
 interface Params {
   /**函数名 */
@@ -30,22 +30,31 @@ type Res = APIV3Res<{
  * 第一期只支持同步调用
  * @param params
  */
-export default async function(params: Params): Promise<Res> {
-  if (!this.config) this.init()
+export default async function(params: Params & InitConfig): Promise<Res> {
+  if (!this.config)
+    this.init({
+      secretId: params.secretId,
+      secretKey: params.secretKey,
+      token: params.token,
+      region: params.region
+    })
 
   const requestHelper = this.requestHelper
   const region = this.config.region
 
-  params['clientContext'] = params.data
-  delete params.data
-
+  // 区分默认参数，可配置参数，不可配置参数
   let __params = Object.assign(
     {
       region,
       namespace: 'default',
       qualifier: '$LATEST'
     },
-    params,
+    {
+      functionName: params.functionName,
+      qualifier: params.qualifier,
+      clientContext: params.data,
+      namespace: params.namespace
+    },
     {
       invocationType: 'RequestResponse',
       logType: 'Tail',

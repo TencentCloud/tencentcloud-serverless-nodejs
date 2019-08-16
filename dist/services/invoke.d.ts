@@ -1,4 +1,4 @@
-import { APIV3Res, APIV3Error } from '../helper/types';
+import { APIV3Res, APIV3Error, InitConfig } from '../helper/types';
 interface Params {
     functionName: string;
     qualifier?: string;
@@ -17,5 +17,5 @@ declare type Res = APIV3Res<{
         Log: string;
     };
 }> & APIV3Error;
-export default function (params: Params): Promise<Res>;
+export default function (params: Params & InitConfig): Promise<Res>;
 export {};
