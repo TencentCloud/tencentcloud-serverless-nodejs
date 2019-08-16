@@ -23,7 +23,7 @@ sdk.init({
 sdk.invoke({
   functionName: 'test',
   qualifier: '$LATEST',
-  clientContext: JSON.stringify({
+  data: JSON.stringify({
     key:'value'
   }),
   namespace:'default'
@@ -50,12 +50,12 @@ sdk.invoke({
 
 **Params:**
 
-| 参数名        | 是否必填 |  类型  |                    描述 |
-| :------------ | :------: | :----: | ----------------------: |
-| functionName  |    是    | string |                函数名称 |
-| qualifier     |    否    | string | 函数版本，默认为$LATEST |
-| clientContext |    否    | string |            函数运行入参 |
-| namespace     |    否    | string | 命名空间，默认为default |
+| 参数名       | 是否必填 |  类型  |                    描述 |
+| :----------- | :------: | :----: | ----------------------: |
+| functionName |    是    | string |                函数名称 |
+| qualifier    |    否    | string | 函数版本，默认为$LATEST |
+| data         |    否    | string |            函数运行入参 |
+| namespace    |    否    | string | 命名空间，默认为default |
 
 
 ## TODO List
