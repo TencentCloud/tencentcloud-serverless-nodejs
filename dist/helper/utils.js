@@ -26,7 +26,7 @@ exports.isType = type => {
     ];
     if (typeMap.indexOf(type) === -1)
         throw `type must in ${typeMap}`;
-    return obj => toString.call(obj) == `[object ${type}]`;
+    return obj => toString.call(obj) === `[object ${type}]`;
 };
 exports.caseFormat = type => string => {
     if (typeof string !== 'string')

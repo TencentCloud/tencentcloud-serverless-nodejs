@@ -8,8 +8,8 @@ let secret = {
 try {
   const secretJson = require('../secret.json')
   secret = {
-    secretId: secret.secretId,
-    secretKey: secret.secretKey
+    secretId: secretJson.secretId,
+    secretKey: secretJson.secretKey
   }
 } catch (e) {
   console.log(e)

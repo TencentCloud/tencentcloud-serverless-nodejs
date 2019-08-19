@@ -33,7 +33,7 @@ export const isType: (type: string) => (obj) => boolean = type => {
     'Symbol'
   ]
   if (typeMap.indexOf(type) === -1) throw `type must in ${typeMap}`
-  return obj => toString.call(obj) == `[object ${type}]`
+  return obj => toString.call(obj) === `[object ${type}]`
 }
 
 /**
