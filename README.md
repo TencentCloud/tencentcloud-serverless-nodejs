@@ -3,8 +3,8 @@
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 [![NPM Version](https://img.shields.io/npm/v/tencentcloud-serverless-nodejs.svg?style=flat)](https://www.npmjs.com/package/tencentcloud-serverless-nodejs)
 [![NODE Version](https://img.shields.io/node/v/tencentcloud-serverless-nodejs.svg)](https://www.npmjs.com/package/tencentcloud-serverless-nodejs)
-[![CircleCI](https://circleci.com/gh/Lighting-Jack/tencentcloud-serverless-nodejs.svg?style=svg&circle-token=c455df1c3e8b5759e3e2e13f8e7e0b9bd2716e80)](https://circleci.com/gh/Lighting-Jack/tencentcloud-serverless-nodejs)
-[![codecov](https://codecov.io/gh/Lighting-Jack/tencentcloud-serverless-nodejs/branch/master/graph/badge.svg?token=ywGg44hzg3)](https://codecov.io/gh/Lighting-Jack/tencentcloud-serverless-nodejs)
+[![CircleCI](https://circleci.com/gh/TencentCloud/tencentcloud-serverless-nodejs/tree/master.svg?style=svg)](https://circleci.com/gh/TencentCloud/tencentcloud-serverless-nodejs/tree/master)
+[![codecov](https://codecov.io/gh/TencentCloud/tencentcloud-serverless-nodejs/branch/master/graph/badge.svg)](https://codecov.io/gh/TencentCloud/tencentcloud-serverless-nodejs)
 
 腾讯云云函数SDK，集成云函数业务流接口
 
