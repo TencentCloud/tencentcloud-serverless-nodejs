@@ -1,7 +1,19 @@
 const LabelResourceNotFound = String('ResourceNotFound.FunctionName')
 
 const sdk = require('../dist/index')
-const secret = require('../secret.json')
+let secret = {
+  secretId: process.env.TENCENTCLOUD_SECRETID,
+  secretKey: process.env.TENCENTCLOUD_SECRETKEY
+}
+try {
+  const secretJson = require('../secret.json')
+  secret = {
+    secretId: secret.secretId,
+    secretKey: secret.secretKey
+  }
+} catch (e) {
+  console.log(e)
+}
 
 const region = 'ap-guangzhou'
 const functionReturnCorrect = {
