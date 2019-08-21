@@ -60,9 +60,9 @@ sdk.invoke({
 | data         |    否    | string |            函数运行入参 |
 | namespace    |    否    | string | 命名空间，默认为default |
 | region    |    否    | string |                                       地域 |
-| secretId  |    否    | string |  默认会取process.env.TENCENTCLOUD_SECRETID |
-| secretKey |    否    | string | 默认会取process.env.TENCENTCLOUD_SECRETKEY |
-| token |    否    | string | 默认会取process.env.TENCENTCLOUD_SESSIONTOKEN |
+| secretId  |    否    | string |  需要手动传入process.env.TENCENTCLOUD_SECRETID |
+| secretKey |    否    | string | 需要手动传入process.env.TENCENTCLOUD_SECRETKEY |
+| token |    否    | string | 需要手动传入process.env.TENCENTCLOUD_SESSIONTOKEN |
 
 
 ## TODO List
