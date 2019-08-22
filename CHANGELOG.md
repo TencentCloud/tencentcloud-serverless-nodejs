@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.0.21"></a>
+## [0.0.21](https://github.com/Lighting-Jack/tencentcloud-serverless-nodejs/compare/v0.0.20...v0.0.21) (2019-08-22)
+
+
+
 <a name="0.0.20"></a>
 ## [0.0.20](https://github.com/Lighting-Jack/tencentcloud-serverless-nodejs/compare/v0.0.19...v0.0.20) (2019-08-22)
 
