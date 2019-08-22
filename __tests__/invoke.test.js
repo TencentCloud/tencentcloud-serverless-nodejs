@@ -1,6 +1,7 @@
 const LabelResourceNotFound = String('ResourceNotFound.FunctionName')
 
 const sdk = require('../dist/index')
+
 let secret = {
   secretId: process.env.TENCENTCLOUD_SECRETID,
   secretKey: process.env.TENCENTCLOUD_SECRETKEY
@@ -11,6 +12,8 @@ try {
     secretId: secretJson.secretId,
     secretKey: secretJson.secretKey
   }
+  process.env.TENCENTCLOUD_SECRETID = secretJson.secretId
+  process.env.TENCENTCLOUD_SECRETKEY = secretJson.secretKey
 } catch (e) {
   console.log(e)
 }
@@ -68,13 +71,31 @@ describe('Test Api With Init', () => {
 })
 
 describe('Test Api Without Init', () => {
+  beforeEach(() => {
+    sdk._reset()
+  })
+
   test(
-    'Test Invoke Correct',
+    'Test Invoke Correct With secret dominantly',
     async () => {
       const res = await sdk.invoke({
         region,
         secretId: secret.secretId,
         secretKey: secret.secretKey,
+        token: undefined,
+        functionName: functionReturnCorrect.functionName,
+        version: functionReturnCorrect.version,
+        data: JSON.stringify(functionReturnCorrect.clientContext),
+        namespace: functionReturnCorrect.namespace
+      })
+      expect(res).toBe(JSON.stringify('test'))
+    },
+    10 * 1000
+  )
+  test(
+    'Test Invoke Correct With secret implicitly',
+    async () => {
+      const res = await sdk.invoke({
         functionName: functionReturnCorrect.functionName,
         version: functionReturnCorrect.version,
         data: JSON.stringify(functionReturnCorrect.clientContext),
@@ -86,12 +107,26 @@ describe('Test Api Without Init', () => {
   )
 
   test(
-    'Test Invoke Error',
+    'Test Invoke Error With secret dominantly',
     async () => {
       const res = await sdk.invoke({
         region,
         secretId: secret.secretId,
         secretKey: secret.secretKey,
+        token: undefined,
+        functionName: functionReturnError.functionName,
+        version: functionReturnError.version,
+        data: JSON.stringify(functionReturnError.clientContext),
+        namespace: functionReturnError.namespace
+      })
+      expect(res.error.code).toBe(LabelResourceNotFound)
+    },
+    10 * 1000
+  )
+  test(
+    'Test Invoke Error With secret implicitly',
+    async () => {
+      const res = await sdk.invoke({
         functionName: functionReturnError.functionName,
         version: functionReturnError.version,
         data: JSON.stringify(functionReturnError.clientContext),

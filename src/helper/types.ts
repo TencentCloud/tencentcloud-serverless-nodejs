@@ -17,5 +17,5 @@ export interface InitConfig {
   secretId?: string
   secretKey?: string
   token?: string
-  region: string
+  region?: string
 }

@@ -23,7 +23,7 @@
     "pretty": true,
     "removeComments": true,
     "stripInternal": true,
-    "types": ["node"],
+    "types": ["node","jest"],
     "strict": false
   },
   "compileOnSave": true,

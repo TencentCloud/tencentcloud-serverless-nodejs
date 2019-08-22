@@ -1,5 +1,6 @@
 import { caseForObject, uniteRes } from '../helper/utils'
 import { APIV3Res, APIV3Error, InitConfig } from '../helper/types'
+import * as _ from 'lodash'
 
 interface Params {
   /**函数名 */
@@ -31,8 +32,7 @@ type Res = APIV3Res<{
  * @param params
  */
 export default async function(params: Params & InitConfig): Promise<Res> {
-  const config = this.config
-  if (!config)
+  if (!this.config)
     this.init({
       secretId: params.secretId,
       secretKey: params.secretKey,
@@ -41,34 +41,34 @@ export default async function(params: Params & InitConfig): Promise<Res> {
     })
 
   const requestHelper = this.requestHelper
-  const region = config.region
+  const region = this.config.region
 
   // 区分默认参数，可配置参数，不可配置参数
-  let __params = Object.assign(
-    {
-      region,
-      namespace: 'default',
-      qualifier: '$LATEST'
-    },
-    {
-      functionName: params.functionName,
-      qualifier: params.qualifier,
-      clientContext: params.data,
-      namespace: params.namespace,
-      region: params.region || config.region,
-      secretId: params.secretId || config.secretId
-    },
-    {
-      invocationType: 'RequestResponse',
-      logType: 'Tail',
-      version: '2018-04-16',
-      action: 'Invoke'
-    }
-  ) as any
-
-  if (config.token || params.token)
-    __params.token = params.token || config.token
-
+  let __params = _.omitBy(
+    _.merge(
+      {
+        region,
+        namespace: 'default',
+        qualifier: '$LATEST'
+      },
+      {
+        functionName: params.functionName,
+        qualifier: params.qualifier,
+        clientContext: params.data,
+        namespace: params.namespace,
+        region: params.region || this.config.region,
+        secretId: params.secretId || this.config.secretId,
+        token: params.token || this.config.token
+      },
+      {
+        invocationType: 'RequestResponse',
+        logType: 'Tail',
+        version: '2018-04-16',
+        action: 'Invoke'
+      }
+    ),
+    _.isUndefined
+  )
   return await uniteRes(
     requestHelper,
     this,
@@ -76,7 +76,7 @@ export default async function(params: Params & InitConfig): Promise<Res> {
       caseForObject(__params, 'upper'),
       {
         serviceType: 'scf',
-        secretKey: params.secretKey || config.secretId
+        secretKey: params.secretKey || this.config.secretKey
       }
     ],
     'Response.Result.RetMsg'

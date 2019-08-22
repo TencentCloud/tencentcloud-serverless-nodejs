@@ -36,8 +36,7 @@ sdk.invoke({
 - [Invoke](#Invoke)
 
 ### Init
-使用SDK前，可以选择初始化SDK，这个并不是强制要求的操作，只是为了方便调用API接口时，复用初始化的配置。
-可传入`region`,`secretId`,`secretKey`。
+使用SDK前，可以选择初始化SDK，这个并不是强制要求的操作，只是为了方便调用API接口时，复用初始化的配置。参数中undefined的值会被忽略。
 
 **Params:**
 
@@ -49,7 +48,7 @@ sdk.invoke({
 | token |    否    | string | 默认会取process.env.TENCENTCLOUD_SESSIONTOKEN |
 
 ### Invoke
-调用函数。暂时只支持同步调用。
+调用函数。暂时只支持同步调用。参数中undefined的值会被忽略。
 
 **Params:**
 
@@ -60,9 +59,24 @@ sdk.invoke({
 | data         |    否    | string |            函数运行入参 |
 | namespace    |    否    | string | 命名空间，默认为default |
 | region    |    否    | string |                                       地域 |
-| secretId  |    否    | string |  需要手动传入process.env.TENCENTCLOUD_SECRETID |
-| secretKey |    否    | string | 需要手动传入process.env.TENCENTCLOUD_SECRETKEY |
-| token |    否    | string | 需要手动传入process.env.TENCENTCLOUD_SESSIONTOKEN |
+| secretId  |    否    | string |  默认会取process.env.TENCENTCLOUD_SECRETID |
+| secretKey |    否    | string | 默认会取process.env.TENCENTCLOUD_SECRETKEY |
+| token |    否    | string | 默认会取process.env.TENCENTCLOUD_SESSIONTOKEN |
+
+**Return:**
+
+正常调用的返回结果为**被调用**的云函数的返回值。
+
+错误调用的返回结果不会从SDK中抛出异常，固定为以下返回类型:
+```typescript
+{
+  error: {
+    code: string
+    message: string
+  }
+  requestId: string
+}
+```
 
 
 ## TODO List

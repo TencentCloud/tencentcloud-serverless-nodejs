@@ -4,6 +4,7 @@ declare class SDK {
     config: InitConfig;
     requestHelper: any;
     init(config?: InitConfig): void;
+    _reset(): void;
     invoke: typeof services.invoke;
 }
 declare const _default: SDK;
