@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.0.22"></a>
+## [0.0.22](https://github.com/Lighting-Jack/tencentcloud-serverless-nodejs/compare/v0.0.21...v0.0.22) (2019-09-23)
+
+
+### Features
+
+* **init:** change throw error to warning when init without secretId/secretKey ([314b338](https://github.com/Lighting-Jack/tencentcloud-serverless-nodejs/commit/314b338))
+
+
+### BREAKING CHANGES
+
+* **init:** change throw error to warning when init without secretId/secretKey
+
+
+
 <a name="0.0.21"></a>
 ## [0.0.21](https://github.com/Lighting-Jack/tencentcloud-serverless-nodejs/compare/v0.0.20...v0.0.21) (2019-08-22)
 
