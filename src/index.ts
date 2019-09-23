@@ -18,7 +18,7 @@ class SDK {
     }
     const __config = _.omitBy(_.merge({}, defaultConfig, config), _.isUndefined)
     if (!__config.secretId || !__config.secretKey)
-      throw Error(ERR_MISSING_SECRET)
+      return console.warn(ERR_MISSING_SECRET)
 
     this.config = __config
     const capi = new Capi({
