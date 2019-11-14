@@ -51,9 +51,10 @@ sdk.invoke({
 | token |    否    | string | 默认会取process.env.TENCENTCLOUD_SESSIONTOKEN |
 
 **ExtraParams:**
+
 | 参数名    | 是否必填 |  类型  |                                       描述 |
 | :-------- | :------: | :----: | -----------------------------------------: |
-| forever    |    否    | boolean |                                       是否开启keep-alive |
+| forever    |    否    | boolean |   是否开启keep-alive |
 | time  |    否    | boolean |  是否打印请求耗时统计 |
 
 ### Invoke
@@ -76,6 +77,7 @@ sdk.invoke({
 | token |    否    | string | 默认会取process.env.TENCENTCLOUD_SESSIONTOKEN |
 
 **ExtraParams:**
+
 | 参数名    | 是否必填 |  类型  |                                       描述 |
 | :-------- | :------: | :----: | -----------------------------------------: |
 | forever    |    否    | boolean |                                       是否开启keep-alive |
