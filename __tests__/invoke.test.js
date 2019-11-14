@@ -2,6 +2,12 @@ const LabelResourceNotFound = String('ResourceNotFound.FunctionName')
 
 const sdk = require('../dist/index')
 
+const extraParams = {
+  forever: true,
+  time: true,
+  strictSSL: false
+}
+
 let secret = {
   secretId: process.env.TENCENTCLOUD_SECRETID,
   secretKey: process.env.TENCENTCLOUD_SECRETKEY
@@ -36,11 +42,14 @@ const functionReturnError = {
 }
 
 describe('Test Api With Init', () => {
-  sdk.init({
-    region,
-    secretId: secret.secretId,
-    secretKey: secret.secretKey
-  })
+  sdk.init(
+    {
+      region,
+      secretId: secret.secretId,
+      secretKey: secret.secretKey
+    },
+    extraParams
+  )
   test(
     'Test Invoke Correct',
     async () => {
@@ -78,16 +87,19 @@ describe('Test Api Without Init', () => {
   test(
     'Test Invoke Correct With secret dominantly',
     async () => {
-      const res = await sdk.invoke({
-        region,
-        secretId: secret.secretId,
-        secretKey: secret.secretKey,
-        token: undefined,
-        functionName: functionReturnCorrect.functionName,
-        version: functionReturnCorrect.version,
-        data: JSON.stringify(functionReturnCorrect.clientContext),
-        namespace: functionReturnCorrect.namespace
-      })
+      const res = await sdk.invoke(
+        {
+          region,
+          secretId: secret.secretId,
+          secretKey: secret.secretKey,
+          token: undefined,
+          functionName: functionReturnCorrect.functionName,
+          version: functionReturnCorrect.version,
+          data: JSON.stringify(functionReturnCorrect.clientContext),
+          namespace: functionReturnCorrect.namespace
+        },
+        extraParams
+      )
       expect(res).toBe(JSON.stringify('test'))
     },
     10 * 1000
@@ -95,12 +107,15 @@ describe('Test Api Without Init', () => {
   test(
     'Test Invoke Correct With secret implicitly',
     async () => {
-      const res = await sdk.invoke({
-        functionName: functionReturnCorrect.functionName,
-        version: functionReturnCorrect.version,
-        data: JSON.stringify(functionReturnCorrect.clientContext),
-        namespace: functionReturnCorrect.namespace
-      })
+      const res = await sdk.invoke(
+        {
+          functionName: functionReturnCorrect.functionName,
+          version: functionReturnCorrect.version,
+          data: JSON.stringify(functionReturnCorrect.clientContext),
+          namespace: functionReturnCorrect.namespace
+        },
+        extraParams
+      )
       expect(res).toBe(JSON.stringify('test'))
     },
     10 * 1000
@@ -109,16 +124,19 @@ describe('Test Api Without Init', () => {
   test(
     'Test Invoke Error With secret dominantly',
     async () => {
-      const res = await sdk.invoke({
-        region,
-        secretId: secret.secretId,
-        secretKey: secret.secretKey,
-        token: undefined,
-        functionName: functionReturnError.functionName,
-        version: functionReturnError.version,
-        data: JSON.stringify(functionReturnError.clientContext),
-        namespace: functionReturnError.namespace
-      })
+      const res = await sdk.invoke(
+        {
+          region,
+          secretId: secret.secretId,
+          secretKey: secret.secretKey,
+          token: undefined,
+          functionName: functionReturnError.functionName,
+          version: functionReturnError.version,
+          data: JSON.stringify(functionReturnError.clientContext),
+          namespace: functionReturnError.namespace
+        },
+        extraParams
+      )
       expect(res.error.code).toBe(LabelResourceNotFound)
     },
     10 * 1000
@@ -126,12 +144,15 @@ describe('Test Api Without Init', () => {
   test(
     'Test Invoke Error With secret implicitly',
     async () => {
-      const res = await sdk.invoke({
-        functionName: functionReturnError.functionName,
-        version: functionReturnError.version,
-        data: JSON.stringify(functionReturnError.clientContext),
-        namespace: functionReturnError.namespace
-      })
+      const res = await sdk.invoke(
+        {
+          functionName: functionReturnError.functionName,
+          version: functionReturnError.version,
+          data: JSON.stringify(functionReturnError.clientContext),
+          namespace: functionReturnError.namespace
+        },
+        extraParams
+      )
       expect(res.error.code).toBe(LabelResourceNotFound)
     },
     10 * 1000

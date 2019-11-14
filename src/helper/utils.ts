@@ -1,3 +1,5 @@
+export const emptyOp = () => {}
+
 /**
  * 复制一个对象，会抛弃继承属性
  * @param obj
@@ -134,7 +136,6 @@ export async function uniteRes(fn, scope, args, returnKey) {
     if (res.Response.Error) {
       throw res.Response
     }
-
     return caseForObject(getValue(res)(returnKey), 'lower') as any
   } catch (e) {
     return caseForObject(e, 'lower') as {

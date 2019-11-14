@@ -1,9 +1,10 @@
 import * as services from './services';
-import { InitConfig } from './helper/types';
+import { InitConfig, ExtraParams } from './helper/types';
 declare class SDK {
     config: InitConfig;
     requestHelper: any;
-    init(config?: InitConfig): void;
+    extraParams: ExtraParams;
+    init(config?: InitConfig, extraParams?: ExtraParams): void;
     _reset(): void;
     invoke: typeof services.invoke;
 }

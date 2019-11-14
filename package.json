@@ -53,6 +53,8 @@
   "dependencies": {
     "lodash": "^4.17.15",
     "lodash.merge": "^4.6.2",
-    "qcloudapi-sdk": "^0.2.1"
+    "object-assign": "3.0.0",
+    "qcloudapi-sdk": "^0.2.1",
+    "request": "^2.88.0"
   }
 }

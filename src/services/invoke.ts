@@ -1,5 +1,5 @@
 import { caseForObject, uniteRes } from '../helper/utils'
-import { APIV3Res, APIV3Error, InitConfig } from '../helper/types'
+import { APIV3Res, APIV3Error, InitConfig, ExtraParams } from '../helper/types'
 import * as _ from 'lodash'
 
 interface Params {
@@ -31,14 +31,20 @@ type Res = APIV3Res<{
  * 第一期只支持同步调用
  * @param params
  */
-export default async function(params: Params & InitConfig): Promise<Res> {
+export default async function(
+  params: Params & InitConfig,
+  extraParams?: ExtraParams
+): Promise<Res> {
   if (!this.config)
-    this.init({
-      secretId: params.secretId,
-      secretKey: params.secretKey,
-      token: params.token,
-      region: params.region
-    })
+    this.init(
+      {
+        secretId: params.secretId,
+        secretKey: params.secretKey,
+        token: params.token,
+        region: params.region
+      },
+      extraParams
+    )
 
   const requestHelper = this.requestHelper
   const region = this.config.region
@@ -69,6 +75,7 @@ export default async function(params: Params & InitConfig): Promise<Res> {
     ),
     _.isUndefined
   )
+
   return await uniteRes(
     requestHelper,
     this,
@@ -77,7 +84,8 @@ export default async function(params: Params & InitConfig): Promise<Res> {
       {
         serviceType: 'scf',
         secretKey: params.secretKey || this.config.secretKey
-      }
+      },
+      this.extraParams || extraParams
     ],
     'Response.Result.RetMsg'
   )

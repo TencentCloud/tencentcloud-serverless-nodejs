@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.emptyOp = () => { };
 exports.clone = function (obj) {
     try {
         return JSON.parse(JSON.stringify(obj, (key, value) => {

@@ -17,3 +17,6 @@ export interface InitConfig {
     token?: string;
     region?: string;
 }
+export interface ExtraParams {
+    forever?: boolean;
+}

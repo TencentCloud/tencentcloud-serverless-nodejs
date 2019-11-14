@@ -32,10 +32,13 @@ sdk.invoke({
 ```
 
 ## API Reference
-- [Init](#Init)
+- [Init](#Init) 
 - [Invoke](#Invoke)
 
 ### Init
+
+**init(Params, ExtraParams)**
+
 使用SDK前，可以选择初始化SDK，这个并不是强制要求的操作，只是为了方便调用API接口时，复用初始化的配置。参数中undefined的值会被忽略。
 
 **Params:**
@@ -47,7 +50,16 @@ sdk.invoke({
 | secretKey |    否    | string | 默认会取process.env.TENCENTCLOUD_SECRETKEY |
 | token |    否    | string | 默认会取process.env.TENCENTCLOUD_SESSIONTOKEN |
 
+**ExtraParams:**
+| 参数名    | 是否必填 |  类型  |                                       描述 |
+| :-------- | :------: | :----: | -----------------------------------------: |
+| forever    |    否    | boolean |                                       是否开启keep-alive |
+| time  |    否    | boolean |  是否打印请求耗时统计 |
+
 ### Invoke
+
+**invoke(Params, ExtraParams)**
+
 调用函数。暂时只支持同步调用。参数中undefined的值会被忽略。
 
 **Params:**
@@ -62,6 +74,12 @@ sdk.invoke({
 | secretId  |    否    | string |  默认会取process.env.TENCENTCLOUD_SECRETID |
 | secretKey |    否    | string | 默认会取process.env.TENCENTCLOUD_SECRETKEY |
 | token |    否    | string | 默认会取process.env.TENCENTCLOUD_SESSIONTOKEN |
+
+**ExtraParams:**
+| 参数名    | 是否必填 |  类型  |                                       描述 |
+| :-------- | :------: | :----: | -----------------------------------------: |
+| forever    |    否    | boolean |                                       是否开启keep-alive |
+| time  |    否    | boolean |  是否打印请求耗时统计 |
 
 **Return:**
 

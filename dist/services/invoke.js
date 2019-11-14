@@ -2,14 +2,14 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const utils_1 = require("../helper/utils");
 const _ = require("lodash");
-async function default_1(params) {
+async function default_1(params, extraParams) {
     if (!this.config)
         this.init({
             secretId: params.secretId,
             secretKey: params.secretKey,
             token: params.token,
             region: params.region
-        });
+        }, extraParams);
     const requestHelper = this.requestHelper;
     const region = this.config.region;
     let __params = _.omitBy(_.merge({
@@ -35,7 +35,8 @@ async function default_1(params) {
         {
             serviceType: 'scf',
             secretKey: params.secretKey || this.config.secretKey
-        }
+        },
+        this.extraParams || extraParams
     ], 'Response.Result.RetMsg');
 }
 exports.default = default_1;
