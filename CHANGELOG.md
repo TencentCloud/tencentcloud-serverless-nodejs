@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.0.25"></a>
+## [0.0.25](https://github.com/Lighting-Jack/tencentcloud-serverless-nodejs/compare/v0.0.24...v0.0.25) (2019-12-27)
+
+
+### Bug Fixes
+
+* **doc:** readme format ([f93d3e9](https://github.com/Lighting-Jack/tencentcloud-serverless-nodejs/commit/f93d3e9))
+
+
+### Features
+
+* **init:** choose the internal endpoint when in tencentcloud serverless ([472267d](https://github.com/Lighting-Jack/tencentcloud-serverless-nodejs/commit/472267d))
+
+
+
 <a name="0.0.24"></a>
 ## [0.0.24](https://github.com/Lighting-Jack/tencentcloud-serverless-nodejs/compare/v0.0.23...v0.0.24) (2019-11-14)
 
