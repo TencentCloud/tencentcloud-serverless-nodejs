@@ -19,4 +19,5 @@ export interface InitConfig {
 }
 export interface ExtraParams {
     forever?: boolean;
+    time?: boolean;
 }
