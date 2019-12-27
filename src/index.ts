@@ -71,12 +71,15 @@ class SDK {
 
     this.extraParams = __extraParams
     this.config = __config
+
+    const isScf = process.env.TENCENTCLOUD_RUNENV === 'SCF'
+
     const capi = new Capi({
       SecretId: __config.secretId,
       SecretKey: __config.secretKey,
       serviceType: 'scf',
       path: '/',
-      baseHost: 'tencentcloudapi.com',
+      baseHost: isScf ? 'internal.tencentcloudapi.com' : 'tencentcloudapi.com',
       protocol: 'https'
     })
     this.requestHelper = (data, opts, extra) => {
