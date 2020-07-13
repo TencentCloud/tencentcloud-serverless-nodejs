@@ -39,7 +39,7 @@
     "eslint-plugin-react": "^7.12.4",
     "jest": "^24.7.1",
     "prettier": "1.18.2",
-    "standard-version": "^4.4.0",
+    "standard-version": "^8.0.1",
     "typescript": "^3.2.2"
   },
   "config": {
